@@ -8,11 +8,47 @@
 	<h3 th:text="${titulo}"></h3>
 	<br>
 	<p th:text="${titulo}"></p>
-	
+
 	<br>
 
 	<tbody>
 		<p th:if="${result}" th:text="${mensaje}"></p>
+
+		<div>
+			<form th:action="@{/formtarjeta" th:objetc="${tarjeta}" method="post">
+				<table>
+					<tr>
+
+						<td>Numero de tarjeta (16 digitos)</td>
+						<td><input type="text" th:field="*{numerodeTarjeta}" /></td>
+					</tr>
+
+
+					<tr>
+						<td>Numero de ICV (3 digitos)</td>
+						<td><input type="text" th:field="*{icv}"></td>
+					</tr>
+
+					<tr>
+						<td>Fecha de vencimiento (yyyy-MM-dd)</td>
+						<td><input type="text" th:field="*{fechavencimiento}" /></td>
+					</tr>
+
+					<tr>
+						<td>ID Cuenta</td>
+						<td><select th:field="${cuenta}">
+								<option th:each="cuenta : ${lista-cuentas}"
+									th:value="${cuenta.getId()}"
+									th:text="${cuenta.getId() + 'Nombre: ' +cuenta.getNombre()}"></option>
+						</select></td>
+					</tr>
+
+				</table>
+				<br> <input type="submit" value="Registrar tarjeta" />
+			</form>
+		</div>
 	</tbody>
+	<hr>
+	<a th:href="@{/lista-tarjeta}">Volver...</a>
 </body>
 </html>

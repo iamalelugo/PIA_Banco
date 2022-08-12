@@ -14,9 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.lang.NonNull;
 
 @Entity
 @Table (name = "tarjetas")
@@ -30,11 +30,11 @@ public class Tarjeta implements Serializable {
 	private long id;
 	
 	@Column
-	@NonNull
+	@NotEmpty
 	private String numerodeTarjeta;
 	
 	@Column (name = "icv", nullable = false ,length = 3)
-	@NonNull
+	@NotEmpty
 	private String icv;
 	
 	@Column (name = "fecha_de_vencimiento")

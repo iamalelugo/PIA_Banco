@@ -11,8 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.lang.NonNull;
 
 @Entity
 @Table (name = "cuentas")
@@ -25,15 +27,15 @@ public class Cuenta implements Serializable {
 	private long id;
 	
 	@Column (name = "nombre")
-	@NonNull
+	@NotEmpty
 	private String nombre;
 	
 	@Column (name = "correo")
-	@NonNull
+	@NotEmpty
 	private String correo;
 	
 	@Column (name = "saldo_actual")
-	@NonNull
+	@NotNull
 	private double saldoactual;
 	
 	@Column (name = "fecha_de_creacion")
