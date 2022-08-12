@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+</head>
+<body>
+	<h3 th:text="${titulo}"></h3>
+	<hr>
+	<a th:href="@{/formcuenta}"> Registrar cuenta</a>
+	<br>
+	<p th:if="{cuentas.isEmpty()}">Lista de cuentas esta vacia</p>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nombre</th>
+				<th>Correo</th>
+				<th>Saldo</th>
+				<th>Dia de creacion</th>
+			</tr>
+		</thead>
+		<tbody>
+		<tr th:each="${cuentas}"></tr>
+		<tr th:each="${cuentas}">
+		<td th:text="${cuenta.getId}"></td>
+		<td th:text="${cuenta.getNombre}"></td>
+		<td th:text="${cuenta.getCorreo}"></td>
+		<td th:text="${cuenta.getSaldo}"></td>
+		<td th:text="${cuenta.getCreacion}"></td>
+		</tr>
+		</tbody>
+	</table>
+</body>
+</html>
